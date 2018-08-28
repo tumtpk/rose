@@ -29,7 +29,8 @@
     <div class="container-fluid">
         <div class="text-center">
             <img src="<?=base_url("/public/images/rose-icon.png"); ?>" class="rounded">
-            <h1 class="danger">Heartbeat<h1>
+            <h1 class="danger">Heartbeat<br>
+            <a href="<?=base_url("/Attraction/createquize"); ?>"><button type="button" class="btn btn-outline-danger btn-lg"><i class="fa fa-plus"></i> Heartbeat</button></a><h1>
         </div>
         <div class="table">
             <table class="table table-bordered" id="table" width="100%" cellspacing="0" style="border: 0px solid #dee2e6;">
