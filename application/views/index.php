@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <title>Rose</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/images/rose-icon.png"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/bootstrap.min.css">
     <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,6 +21,9 @@
         }
         .danger{
             color:#d66c88;
+        }
+        .card-img-top{
+            width:60% !important;
         }
     </style>
 </head>
@@ -69,6 +72,9 @@
     <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
     <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
     <script>
+    var base_url = "<?=base_url();?>";
+    var gender = ["","ชาย","หญิง"];
+    var genderPic = ["","male.jpg","female.jpg"];
     var table = $('#table').DataTable({
         "language": {
                 "aria": {
@@ -92,73 +98,57 @@
             "responsive": true,
             "bLengthChange": false,
             "searching": false,
-            // "processing": true,
-            // "serverSide": true,
+            "processing": true,
+            "serverSide": true,
             "orderable": false,
-            "pageLength": 12,
-            // "ajax":{
-            //     "url": base_url+"apiCaraccessories/Lubricatorbrand/searchLubricatorbrand",
-            //     "dataType": "json",
-            //     "type": "POST",
-            //     "data": function ( data ) {
-            //         data.lubricator_brandName = $("#lubricatorbrandName-search").val(),
-            //         data.column = $("#column").val()
-            //     }
-            // },
+            "pageLength": 16,
+            "ajax":{
+                "url": base_url+"api/Target/search",
+                "dataType": "json",
+                "type": "POST",
+                "data": function ( data ) {
+                    // data.column = $("#column").val()
+                }
+            },
             "columns": [
                 null
             ],
-            // "columnDefs": [
-            //     {
-            //         "targets": 0,
-            //         "data": null,
-            //         "render": function ( data, type, full, meta ) {
-            //             var html = '<div class="row">';
+            "columnDefs": [
+                {
+                    "targets": 0,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '<div class="row">';
 
-            //             $.each(data, function( index, value ) {
+                        $.each(data, function( index, value ) {
 
-            //                 var gray = "";
-            //                 var isShow = false;
-
-            //                 if(value.status == '2'){
-            //                     var gray = " filter-gray ";
-            //                     if(value.create_by == userId && value.activeFlag == 2){
-            //                         isShow = true;
-            //                     }
-            //                 }
-                           
-            //                 html += '<div class="col-lg-3 ">'
-            //                      + '<div class="card card-header-height">'
-            //                      + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
-            //                      + '<img class="card-img-top" src="'+base_url+'public/image/lubricator_brand/'+value.lubricator_brandPicture+'" alt="Card image cap">'
-            //                      + '<div class="card-body text-center">'
-            //                      + '<h5 class="card-title">'+value.lubricator_brandName+'</h5>'
-            //                      + '</div>'
-            //                      + '<div class="card-body text-center card-bottom">'
-            //                      + '<a href="'+base_url+"caraccessory/Lubricator/lubricators/"+value.lubricator_brandId+'">'
-            //                      + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
-            //                      + '</a>'
-
-                                
                             
-            //                 if(isShow){
-            //                     html += '<a href="'+base_url+"caraccessory/Lubricator/updateLubricatorBrand/"+value.lubricator_brandId+'">'
-            //                      + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
-            //                      + '</a>'
-            //                      + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletelubricator_brand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   
-            //                  }
-
-            //                     html += '</div>'
-            //                      + '</div>'
-            //                      + '</div>';
+                           
+                            html += '<div class="col-lg-3 ">'
+                                    +'<div class="card" style="width: 18rem;">'
+                                        +'<div class="text-center">'
+                                            +'<img class="card-img-top" src="'+base_url+'/public/images/'+genderPic[value.gender]+'" alt="Card image cap">'
+                                        +'</div>'
+                                        +'<div class="card-body">'
+                                            +'<h5 class="card-title">ชื่อ '+value.name+'</h5>'
+                                            +'<h6 class="card-subtitle mb-2 text-muted">สาขา '+value.acdamy+'</h6>'
+                                            +'<p class="card-text">'
+                                                +'สำนักวิชา '+value.acdamy+'<br>'
+                                                +'ชั้นปี &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+value.year+'<br>'
+                                                +'เพศ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+gender[value.gender]+'</p>'
+                                            +'<a href="#" class="card-link"><i class="fa fa-share-alt"></i> คำถาม</a>'
+                                            +'<a href="#" class="card-link"><i class="fa fa-share-alt"></i> ค่าเสน่ห์</a>'
+                                        +'</div>'
+                                    +'</div>'
+                                 + '</div>';
   
-            //             });
+                        });
 
-            //             html += '</div>';
-            //             return html;
-            //         }
-            //     }
-            // ]
+                        html += '</div>';
+                        return html;
+                    }
+                }
+            ]
     });
     </script>
 </body>
