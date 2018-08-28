@@ -43,7 +43,7 @@ class Target extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData[$count]['Id'] = $post->Id;
+                $nestedData[$count]['id'] = $post->Id;
                 $nestedData[$count]['name'] = $post->name;
                 $nestedData[$count]['year'] = $post->year;
                 $nestedData[$count]['major'] = $post->major;

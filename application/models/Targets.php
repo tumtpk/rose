@@ -45,7 +45,7 @@ class Targets extends CI_Model{
 
     function target_search_count($search)
     {
-        $query = $this->db->like('brandName',$search)
+        $query = $this->db->like('name',$search)
                 ->get('taget');
     
         return $query->num_rows();

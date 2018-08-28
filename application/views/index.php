@@ -35,6 +35,16 @@
             <h1 class="danger">Heartbeat<br>
             <a href="<?=base_url("/Attraction/createquize"); ?>"><button type="button" class="btn btn-outline-danger btn-lg"><i class="fa fa-plus"></i> Heartbeat</button></a><h1>
         </div>
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Heartbeat's name" aria-label="Heartbeat's name" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-info" type="button" id="btn-search">ค้นหา</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="table">
             <table class="table table-bordered" id="table" width="100%" cellspacing="0" style="border: 0px solid #dee2e6;">
                 <thead style="display:none">
@@ -54,7 +64,7 @@
                                                 ชั้นปี &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxxxx<br>
                                                 เพศ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxxxx</p>
                                             <a href="#" class="card-link"><i class="fa fa-share-alt"></i> คำถาม</a>
-                                            <a href="#" class="card-link"><i class="fa fa-share-alt"></i> ค่าเสน่ห์</a>
+                                            <a href="<?=base_url("/Attraction/share/"); ?>" class="card-link"><i class="fa fa-share-alt"></i> ค่าเสน่ห์</a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +117,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.column = $("#column").val()
+                    data.name = $("#name").val()
                 }
             },
             "columns": [
@@ -137,7 +147,7 @@
                                                 +'ชั้นปี &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+value.year+'<br>'
                                                 +'เพศ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+gender[value.gender]+'</p>'
                                             +'<a href="#" class="card-link"><i class="fa fa-share-alt"></i> คำถาม</a>'
-                                            +'<a href="#" class="card-link"><i class="fa fa-share-alt"></i> ค่าเสน่ห์</a>'
+                                            +'<a href="'+base_url+"Attraction/share/"+value.id+'" class="card-link"><i class="fa fa-share-alt"></i> ค่าเสน่ห์</a>'
                                         +'</div>'
                                     +'</div>'
                                  + '</div>';
@@ -150,6 +160,11 @@
                 }
             ]
     });
+
+    $("#btn-search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
     </script>
 </body>
 </html>
