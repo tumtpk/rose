@@ -44,33 +44,33 @@
             <div class="col-md-20">
                     <div class="form-group">
                     <label class="control-label">ผู้ทำควิช </label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ผู้ทำควิช">
+                    <input type="text" id="namedoquiz" class="form-control" name="namedoquiz" placeholder="ผู้ทำควิช">
                     </div>
                 </div>
                     <label class="control-label">ค่าความมีเสน่ห์</label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ค่าความมีเสน่ห์">
+                    <input type="text" id="question2" class="form-control" name="question2" placeholder="ค่าความมีเสน่ห์">
                 <div class="col-md-20">
                     <div class="form-group">
                     <label class="control-label">ค่านิสัย </label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ค่าความนิสัย">
+                    <input type="text" id="question3" class="form-control" name="question3" placeholder="ค่าความนิสัย">
                     </div>
                 </div>
                 <div class="col-md-20">
                     <div class="form-group">
                     <label class="control-label">ค่ารอยยิ้ม</label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ค่าความรอยยิ้ม">
+                    <input type="text" id="question4" class="form-control" name="question4" placeholder="ค่าความรอยยิ้ม">
                     </div>
                 </div>
                 <div class="col-md-20">
                     <div class="form-group">
                     <label class="control-label">ค่าความรวย</label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ค่าความรวย">
+                    <input type="text" id="question5" class="form-control" name="question5" placeholder="ค่าความรวย">
                     </div>
                 </div>
                 <div class="col-md-20">
                     <div class="form-group">
                     <label class="control-label">ค่าคารมณ์</label>
-                    <input type="text" id="brandName" class="form-control" name="brandName" placeholder="คารมณ์">
+                    <input type="text" id="question6" class="form-control" name="question6" placeholder="คารมณ์">
                     </div>
                 </div>
                 </div>
