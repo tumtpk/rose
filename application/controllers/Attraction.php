@@ -21,9 +21,11 @@ class Attraction extends CI_Controller {
         $this->load->view("quiz");
     }
 
-    public function share($userId){
+    public function share($id){
         // $this->load->view("lib");
-        $this->load->view("share");
+        $this->load->model("targets");
+        $data["target"] = $this->targets->getTargetById($id);
+        $this->load->view("share",$data);
     }
 
     public function success(){

@@ -51,4 +51,8 @@ class Targets extends CI_Model{
         return $query->num_rows();
     } 
 
+    function getTargetById($id){
+        return $this->db->where("Id",$id)->get("taget")->row();
+    }
+
 }
